@@ -1,0 +1,23 @@
+1. /start me user already exist wala text update krna h. + bhut saare replies sahi krna h.
+2. implement a notice where they knows that if u get referred u get more points than starting the bot without referrals.
+3. bot.setMenu krna h bot.js me.
+4. Menu Button bnana hai.
+4. /report bnana h report any bug or issue kr k 
+5. create log of errors and console logs and generate a report
+6. /request bnana h ek, feature requests, etc k liye
+7. check the last date when the user used the bot and save it in the users db add something like last used command and when.
+8. /points runs automatically, after each time video photo gif is called
+9. create a support bot.
+10. import checkRegistration from "./middlewares/checkRegistration.js"; //can be potentially removed as the user cant access the bot without registering anyway
+
+WHENEVER A COMMAND IS ADDED, UPDATE THE FOLLLOWING FILES: 
+1. bot.js 
+2. prisma schema
+3. middleware check commands 
+4. 
+
+
+
+await ctx.reply("^ This is a message!", {
+  reply_parameters: { message_id: ctx.msg.message_id },
+});

@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId        Int      @unique
+  username      String
+  firstName     String
+  points        Int      @default(10)
+  language      String   @default("English")
+  referralCount Int      @default(0)
+  referredBy    Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  commandUsage  Json     @default("{\"/video\": 0, \"/photo\": 0, \"/gif\": 0, \"/start\": 0, \"/help\": 0, \"/report\": 0, \"/points\": 0, \"/refer`\": 0}")
+}
+
+model Photo {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  photoId   String   @unique
+  title     String
+  size      Int
+  tags      String[] @default([])
+  thumbnail Json   @default("{}")
+  createdAt DateTime @default(now())
+}
+
+model Video {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  videoId   String   @unique
+  title     String   @default("Untitled")
+  size      Int      @default(0)
+  duration  Int      @default(0)
+  thumbnail Json
+  tags      String[] @default([])
+  createdAt DateTime @default(now())
+}
+
+
+
+model Gif {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  gifId     String   @unique
+  title     String
+  size      Int
+  tags      String[]
+  thumbnail Json
+  createdAt DateTime @default(now())
+}
